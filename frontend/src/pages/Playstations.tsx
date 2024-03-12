@@ -8,7 +8,7 @@ const Playstations = () => {
   useEffect(() => {
     const fetchPlaystations = async () => {
       try {
-        const response = await axios.get<PlayStation[]>('http://localhost:3001/get-products-by-category?productType=PlayStation');
+        const response = await axios.get<PlayStation[]>('http://localhost:80/get-products-by-category?productType=PlayStation');
         const playstations = response.data.map(item => new PlayStation(item.title, item.imageUrl, item.basePrice));
         setPlaystations(playstations);
       } catch (error) {

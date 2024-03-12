@@ -8,7 +8,7 @@ const SSDs = () => {
   useEffect(() => {
     const fetchSSDs = async () => {
       try {
-        const response = await axios.get<SSD[]>('http://localhost:3001/get-products-by-category?productType=SSD');
+        const response = await axios.get<SSD[]>('http://localhost:80/get-products-by-category?productType=SSD');
         const ssds = response.data.map(item => new SSD(item.title, item.imageUrl, item.basePrice));
         setSSDs(ssds);
       } catch (error) {

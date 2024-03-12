@@ -8,7 +8,7 @@ const Phones = () => {
   useEffect(() => {
     const fetchPhones = async () => {
       try {
-        const response = await axios.get<Phone[]>('http://localhost:3001/get-products-by-category?productType=Phone');
+        const response = await axios.get<Phone[]>('http://localhost:80/get-products-by-category?productType=Phone');
         const phones = response.data.map(item => new Phone(item.title, item.imageUrl, item.basePrice));
         setPhones(phones);
       } catch (error) {

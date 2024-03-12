@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import { recommendedProducts } from "./dummyData";
 
 const app = express();
-const port = process.env.PORT || 3001;
+const port: number = parseInt(process.env.PORT ?? "3001");
 const cors = require("cors");
 app.use(cors());
 

@@ -18,7 +18,7 @@ const Carousel = () => {
       do {
         try {
           const response = await axios.get(
-            "http://localhost:3001/get-product-recommendations"
+            "http://localhost:80/get-product-recommendations"
           );
           setProducts(response.data);
           setErrorMessage(null);

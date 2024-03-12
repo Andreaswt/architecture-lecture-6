@@ -8,7 +8,7 @@ const Laptops = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get<Laptop[]>('http://localhost:3001/get-products-by-category?productType=Laptop');
+        const response = await axios.get<Laptop[]>('http://localhost:80/get-products-by-category?productType=Laptop');
         const laptops = response.data.map(item => new Laptop(item.title, item.imageUrl, item.basePrice));
         setLaptops(laptops);
       } catch (error) {
