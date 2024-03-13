@@ -8,7 +8,7 @@ RUN npm install
 COPY . .
 
 RUN npm run build
-EXPOSE 3001
+EXPOSE 5000
 
 ENV TOGGLE_UNFINISHED_FEATURE=true
 

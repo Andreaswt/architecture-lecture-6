@@ -2,7 +2,6 @@ import express, { Request, Response } from "express";
 import { recommendedProducts } from "./dummyData";
 
 const app = express();
-const port: number = parseInt(process.env.PORT ?? "3001");
 const cors = require("cors");
 app.use(cors());
 
@@ -10,6 +9,7 @@ app.use(express.json());
 
 app.get("/get-product-recommendations", (_: Request, res: Response) => {
   const randomNumber = Math.random();
+  console.log('Getting products')
 
   if (randomNumber > 0.5) {
     const shuffledProducts = recommendedProducts
@@ -39,6 +39,9 @@ if (process.env.TOGGLE_UNFINISHED_FEATURE === "true") {
   });
 }
 
-app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`);
+let server = app.listen(5000, () => {
+  if(server != null) {
+    console.log(`[server]: Server is running at http://localhost:`);
+    console.log('list', server.address())
+  }
 });

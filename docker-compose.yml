@@ -6,47 +6,28 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
-    networks:
-      - loadbalancing
     depends_on:
       - express-api
-      - express-api-2
 
   express-api:
+    hostname: backend
     build:
       context: ./backend
       dockerfile: Dockerfile
-    networks:
-      - loadbalancing
-    environment:
-      - PORT=3001
     expose:
-      - "3001"
-
-  express-api-2:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    networks:
-      - loadbalancing
-    environment:
-      - PORT=3002
-    expose:
-      - "3002"
+      - "5000"
 
   nginx:
     image: nginx:latest
-    ports:
-      - "80:80"
-    networks:
-      - loadbalancing
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
     depends_on:
       - express-api
-      - express-api-2
 
 
 
 networks:
-  loadbalancing:
+  default:
+    driver: bridge
